@@ -4,6 +4,7 @@ import "./styles.css";
 
 const App = () => {
   const [user, setUser] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -16,7 +17,16 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-      <CardItem user={user} />
+      <div className="input-box">
+        <input
+          value={search}
+          id="search"
+          placeholder="Search..."
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      <CardItem user={user} search={search} />
     </div>
   );
 };
